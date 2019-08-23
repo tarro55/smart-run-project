@@ -2,12 +2,18 @@
  <template>
  <div>
      <h2>Test Bluetooth</h2>
+<<<<<<< HEAD
      <q-btn color="primary" type="submit" @click="blueToothScan" label="สแกน" />
      <br><br><hr>
 
     <pre>{{devices}}</pre>
     <q-btn color="primary" type="submit" label="เชื่อมต่อ" />
     <hr>
+=======
+     <q-btn color="primary" type="submit" label="สแกน" />
+     <br><br>
+     <pre>{{devices}}</pre>
+>>>>>>> 3ce0fa03875efa5abe0e001b01cdd78319e38671
      
 
    
@@ -17,7 +23,10 @@
 
     <script>
     import { get,sync,call } from "vuex-pathify"; 
+<<<<<<< HEAD
 import { setTimeout } from 'timers';
+=======
+>>>>>>> 3ce0fa03875efa5abe0e001b01cdd78319e38671
  
 
 export default {
@@ -60,7 +69,11 @@ methods:{
         },
         function() {
             ble.showBluetoothSettings();
+<<<<<<< HEAD
             //ble.readRSSI(device_id, success, failure);
+=======
+            ble.readRSSI(device_id, success, failure);
+>>>>>>> 3ce0fa03875efa5abe0e001b01cdd78319e38671
             location.reload();
         }
           );
@@ -70,6 +83,7 @@ methods:{
 
     async blueToothScan(){
  
+<<<<<<< HEAD
        ble.startScan([], 
         (device)=> {
             this.devices = device.name
@@ -111,6 +125,44 @@ methods:{
     },
 
 
+=======
+        ble.startScan([], 
+        function(device) {
+            this.devices = device
+            console.log(device)
+           //console.log(JSON.stringify(device));
+           
+        }, );
+
+        setTimeout(ble.stopScan,5000,
+        function() { 
+            
+            console.log("Scan complete");
+            
+        },
+
+        function() { console.log("stopScan failed");  }
+        ); 
+
+    //    ble.startScan([], this.success, this.failure );
+ 
+    },
+
+   /* success(device){ 
+        this.devices = device
+        console.log(device)
+        
+    },
+    failure(device){
+        setTimeout(function() {
+            this.devices = device
+            ble.stopScan(   
+            function() { console.log("Scan complete"); },
+            function() { console.log("stopScan failed"); }
+            );
+        }, 5000);
+    },*/
+>>>>>>> 3ce0fa03875efa5abe0e001b01cdd78319e38671
 
 
     
@@ -119,9 +171,17 @@ methods:{
     load:async function(){
      
       await this.blueToothStatus();
+<<<<<<< HEAD
      
       
     },
+=======
+      await this.blueToothScan();
+      
+      
+    },
+ 
+>>>>>>> 3ce0fa03875efa5abe0e001b01cdd78319e38671
 },
     }
 </script>
